@@ -1,34 +1,17 @@
-## Usage
+## Using Shoelace components in SolidJS
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+This is based on the SolidJS starter TypeScript template as of Feb-23-2013. The purpose of this is to provide a working example of how to **cherry pick** specific components and have them **installed locally via npm** to minimize bundle size.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+### Necessary steps:
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+Install `@shoelace-style/shoelace`
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+Install `vite-plugin-static-copy`. Configure it to copy the shoelace icons and other assets from `node_modules` to a folder named `shoelace-assets` in the `dist` folder. This will happen on each build. See `vite.config.ts` for details. You could do it manually instead.
 
-## Available Scripts
+In `index.html` reference the Shoelace style sheets. Probably could do this somewhere else; I'm not sure.
 
-In the project directory, you can run:
+In `index.tsx` import only the specific components you want to use in your app. Also do the `setBasePath` thing so Shoelace can find the icons and other assets.
 
-### `npm dev` or `npm start`
+Create a `declaration.d.ts` file. This has some TypeScript magic that prevents errors about unknown elements in your `tsx`.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+To use the components, see `App.tsx`. Do `import type...` to get reference to the TypeScript types of the components you want to work with. Use `ref` to programmatically access it. A couple gotchas: (1) Prefix the Shoelace component prop names with `prop:`. (2) If a prop is a singleton boolean like `open` specify it as `prop:open={true}`.
