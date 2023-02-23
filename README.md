@@ -1,6 +1,8 @@
 ## Using Shoelace components in SolidJS
 
-This is based on the SolidJS starter TypeScript template as of Feb-23-2013. The purpose of this is to provide a working example of how to **cherry pick** specific components and have them **installed locally via npm** to minimize bundle size.
+This is based on the SolidJS starter TypeScript template as of Feb-23-2013. The purpose of this is to provide a working example of how to **cherry pick** specific components and have them **installed locally via npm** to minimize bundle size. These steps seem to work in both dev and build/production mode.
+
+I am far from a web programming expert. So if there are problems here please let me know.
 
 ### Necessary steps:
 
